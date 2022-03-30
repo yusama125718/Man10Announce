@@ -1,0 +1,10 @@
+name: Man10Announce
+version: '${project.version}'
+main: yusama125718_029282ihcuobust.man10announce.Man10Announce
+api-version: 1.17
+
+parmissions:
+  mano.op:
+    default: op
+  mano.player:
+    default: true
