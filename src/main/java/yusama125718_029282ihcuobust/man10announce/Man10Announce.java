@@ -7,7 +7,7 @@ import java.util.List;
 
 public final class Man10Announce extends JavaPlugin {
 
-    JavaPlugin manno;
+    static JavaPlugin manno;
     public static List<String> commandlist = new ArrayList<>();
     public static List<List<String>> message = new ArrayList<>();
     public static int cooltime;
@@ -15,14 +15,25 @@ public final class Man10Announce extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        this.manno = this;
-        commandlist = getConfig().getStringList("command");
+        manno = this;
+        commandlist = manno.getConfig().getStringList("command");
         for (String s : commandlist) {
-            message.add(getConfig().getStringList(s));
+            message.add(manno.getConfig().getStringList(s));
         }
-        cooltime = getConfig().getInt("cooltime");
+        cooltime = manno.getConfig().getInt("cooltime");
     }
 
     @Override
     public void onDisable() {}
+
+    public static void configsave(){
+        manno.getConfig().set("command",commandlist);
+        manno.getConfig().set("cooltime",cooltime);
+        int i = 0;
+        for (String s : commandlist) {
+            manno.getConfig().set(s,message.get(i));
+            i++;
+        }
+        manno.saveConfig();
+    }
 }

@@ -61,12 +61,24 @@ public class Command implements CommandExecutor {
                         sender.sendMessage("§c[Man10Announce]そのコマンドはすでに登録されています");
                         return true;
                     }
+                    commandlist.add(args[1]);
+                    message.get(commandlist.size() - 1).add("nil");
+                    configsave();
                 }
                 if (args[0].equals("delete")){
                     if (!commandlist.contains(args[1])){
                         sender.sendMessage("§c[Man10Announce]そのコマンドは登録されていません");
                         return true;
                     }
+                    commandlist.remove(args[1]);
+                    for (int i = 0;i < commandlist.size();i++){
+                        if (commandlist.contains(args[1])){
+                            for (int j = 0;j < message.get(i).size();j++){
+                                message.get(i).remove(i);
+                            }
+                        }
+                    }
+                    configsave();
                 }
             }
         }
