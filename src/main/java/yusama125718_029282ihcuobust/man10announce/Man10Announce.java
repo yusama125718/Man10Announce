@@ -7,7 +7,7 @@ import java.util.List;
 
 public final class Man10Announce extends JavaPlugin {
 
-    static JavaPlugin manno;
+    static Man10Announce manno;
     public static List<String> commandlist = new ArrayList<>();
     public static List<List<String>> message = new ArrayList<>();
     public static int cooltime;
