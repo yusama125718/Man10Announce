@@ -87,4 +87,31 @@ public class Command implements CommandExecutor {
         }
         return true;
     }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command command, String alias, String[] args)
+    {
+        for (String s : commandlist)
+        {
+            if (command.getName().equalsIgnoreCase(s))
+            {
+                return Collections.singletonList(s);
+            }
+        }
+        if(command.getName().equalsIgnoreCase("mannounce"))
+        {
+            if (sender.hasPermission("mano.op"))
+            {
+                if (args.length == 1)
+                {
+                    if (args[0].length() == 0)
+                    {
+                        return Collections.singletonList("");
+                    }
+                }
+            }
+            else return null;
+        }
+        return null;
+    }
 }
