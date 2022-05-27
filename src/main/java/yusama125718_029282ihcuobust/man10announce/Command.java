@@ -23,7 +23,10 @@ public class Command implements CommandExecutor {
                 }
                 ct = true;
                 for (String s : message.get(i)){
-                    Bukkit.broadcast(s);
+                    for (Player player:Bukkit.getOnlinePlayers())
+                    {
+                        player.sendMessage(s);
+                    }
                 }
                 try {
                     Thread.sleep(cooltime * 1000L);
