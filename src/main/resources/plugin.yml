@@ -1,6 +1,6 @@
 name: Man10Announce
 version: '${project.version}'
-main: yusama125718_029282ihcuobust.man10announce.Man10Announce
+main: yusama125718.man10announce.Man10Announce
 api-version: 1.17
 
 parmissions:
